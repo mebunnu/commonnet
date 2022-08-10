@@ -1,4 +1,4 @@
-﻿namespace CommonNet;
+﻿namespace CommonNet.Helpers;
 
 public static class Helper
 {
@@ -70,7 +70,7 @@ public static class Helper
 
         for (int i = 0; i < password.Length; i++)
         {
-            switch(random.Next(0,12))
+            switch (random.Next(0, 12))
             {
                 case 0:
                 case 1:
