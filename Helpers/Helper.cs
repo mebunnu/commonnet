@@ -2,16 +2,15 @@
 
 public static class Helper
 {
-    public static string Base64Encode(string plainText)
+    public static string ToBase64(this string str)
     {
-        return Convert.ToBase64String(Encoding.UTF8.GetBytes(plainText));
+        return Convert.ToBase64String(Encoding.UTF8.GetBytes(str));
     }
 
-    public static string Base64Decode(string base64encode)
+    public static string FromBase64(this string str)
     {
-        return Encoding.UTF8.GetString(Convert.FromBase64String(base64encode));
+        return Encoding.UTF8.GetString(Convert.FromBase64String(str));
     }
-
 
     public static string GenerateToken(TokenModel model)
     {
@@ -97,5 +96,51 @@ public static class Helper
         }
 
         return new string(password);
+    }
+
+    public static byte[] ReadFileBytes(string path)
+    {
+        return File.ReadAllBytes(path);
+    }
+
+    public static void CopyfromSourcetoDestination(string source, string destination)
+    {
+        File.Copy(source, destination);
+    }
+
+    public static bool CheckIfFileExists(string path)
+    {
+        return File.Exists(path);
+    }
+
+    public static void DeleteFile(string path)
+    {
+        File.Delete(path);
+    }
+
+    //converts non seekable streams to seekable streams
+    public static Stream CopyStreamtoNewStream(Stream stream)
+    {
+        return BinaryData.FromStream(stream).ToStream();
+    }
+
+    public static byte[] ConvertStreamtoBytes(Stream stream)
+    {
+        return BinaryData.FromStream(stream).ToArray();
+    }
+
+    public static Stream ConvertBytestoStream(byte[] bytes)
+    {
+        return BinaryData.FromBytes(bytes).ToStream();
+    }
+
+    public static string ConvertStreamtoString(Stream stream)
+    {
+        return BinaryData.FromStream(stream).ToString();
+    }
+
+    public static Stream ConvertStringtoStream(string data)
+    {
+        return BinaryData.FromString(data).ToStream();
     }
 }
