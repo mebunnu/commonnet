@@ -1,29 +1,60 @@
 ﻿namespace CommonNet.Dapper;
 
-public interface IDapper
+/// <summary>
+/// idapper interface
+/// </summary>
+internal interface IDapper
 {
-    //var commandDefinition = new CommandDefinition(commandText: SQL.UPDATE_QUERY, parameters: new
-    //{
-    //    id = value.Id,
-    //    name = value.Name
-    //}, cancellationToken: cancellationToken);
+    /// <summary>
+    /// returns list of data
+    /// </summary>
+    /// <typeparam name="T">any class type</typeparam>
+    /// <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
+    /// <returns>List of T</returns>
     Task<IEnumerable<T>> GetList<T>(CommandDefinition commandDefinition);
 
+    /// <summary>
+    /// returns an item
+    /// </summary>
+    /// <typeparam name="T">any class type</typeparam>
+    /// <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
+    /// <returns>item</returns>
     Task<T> GetItem<T>(CommandDefinition commandDefinition);
 
+    /// <summary>
+    /// used to add or update data
+    /// </summary>
+    /// <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
+    /// <returns>returns 1 if successfully executed.</returns>
     ValueTask<int> ExecuteAsync(CommandDefinition commandDefinition);
 }
 
+/// <summary>
+/// dapper class
+/// </summary>
 public class Dapper : IDapper
 {
-    public static string ConnectionString;
+    /// <summary>
+    /// sets sql connection string
+    /// </summary>
+    /// <param name="connectionString">connection string of sql</param>
+    public void SetConnectionString(string connectionString)
+    {
+        Keys.SQLCONNECTIONSTRING = connectionString;
+    }
 
+    /// <summary>
+    /// returns list of data
+    /// </summary>
+    /// <typeparam name="T">any class type</typeparam>
+    /// <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
+    /// <returns>List of T</returns>
     public async Task<IEnumerable<T>> GetList<T>(CommandDefinition commandDefinition)
     {
         using TransactionScope scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
         try
         {
-            using SqlConnection connection = new SqlConnection(ConnectionString);
+            using SqlConnection connection = new SqlConnection(Keys.SQLCONNECTIONSTRING);
             IEnumerable<T> data = await connection.QueryAsync<T>(commandDefinition).ConfigureAwait(false);
             scope.Complete();
             return data;
@@ -35,13 +66,19 @@ public class Dapper : IDapper
         }
     }
 
+    /// <summary>
+    /// returns an item
+    /// </summary>
+    /// <typeparam name="T">any class type</typeparam>
+    /// <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
+    /// <returns>item</returns>
     public async Task<T> GetItem<T>(CommandDefinition commandDefinition)
     {
         using TransactionScope scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
         try
         {
-            using SqlConnection connection = new SqlConnection(ConnectionString);
-            T data = await connection.QuerySingleOrDefaultAsync<T>(commandDefinition);
+            using SqlConnection connection = new SqlConnection(Keys.SQLCONNECTIONSTRING);
+            T data = await connection.QuerySingleOrDefaultAsync<T>(commandDefinition).ConfigureAwait(false);
             scope.Complete();
             return data;
         }
@@ -52,12 +89,17 @@ public class Dapper : IDapper
         }
     }
 
+    /// <summary>
+    /// used to add or update data
+    /// </summary>
+    /// <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
+    /// <returns>returns 1 if successfully executed. returns 0 if failed</returns>
     public async ValueTask<int> ExecuteAsync(CommandDefinition commandDefinition)
     {
         using TransactionScope scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
         try
         {
-            using SqlConnection connection = new SqlConnection(ConnectionString);
+            using SqlConnection connection = new SqlConnection(Keys.SQLCONNECTIONSTRING);
             int data = await connection.ExecuteAsync(commandDefinition).ConfigureAwait(false);
             scope.Complete();
             return data;

@@ -1,6 +1,12 @@
 ﻿namespace CommonNet.Models;
 
-public static class Keys
+/// <summary>
+/// keys 
+/// </summary>
+internal static class Keys
 {
-
+    /// <summary>
+    /// sql connection string
+    /// </summary>
+    internal static string SQLCONNECTIONSTRING;
 }
