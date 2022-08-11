@@ -1,19 +1,43 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DocumentationFile></DocumentationFile>
+		<Authors>S Lalith Prasad</Authors>
+		<Company>Absolute Algorithm</Company>
+		<Description>this library consists of C# helper functions, including Azure</Description>
+		<PackageTags>C# Helper Functions, Dotnet Helper Functions, C#, Dotnet, Dapper, Sql, Azure Storage, Storage</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageId>AbsoluteAlgorithm.$(AssemblyName)</PackageId>
+		<NeutralLanguage>en</NeutralLanguage>
+		<PackageIcon>icon.png</PackageIcon>
+		<Version>1.0.0</Version>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.22.0" />
-    <PackageReference Include="System.Memory.Data" Version="6.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.0.123" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.22.0" />
+		<PackageReference Include="System.Memory.Data" Version="6.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Azure\Storage\" />
-    <Folder Include="Dapper\" />
-    <Folder Include="Azure\AI\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Azure\Storage\" />
+		<Folder Include="Dapper\" />
+		<Folder Include="Azure\AI\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="documentation.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="icon.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 
 </Project>

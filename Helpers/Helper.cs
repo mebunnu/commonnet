@@ -30,7 +30,7 @@ public static class Helper
         return tokenHandler.WriteToken(token);
     }
 
-    public static int GenerateOtp(int numberofcharacters = 4)
+    public static int GenerateOTP(int numberofcharacters = 4)
     {
         string min = string.Empty;
         string max = string.Empty;
@@ -58,20 +58,15 @@ public static class Helper
         char[] PASSWORD_CHARS_LCASE = "abcdefgijkmnopqrstwxyz".ToCharArray();
         char[] PASSWORD_CHARS_UCASE = "ABCDEFGHJKLMNPQRSTWXYZ".ToCharArray();
         char[] PASSWORD_CHARS_NUMERIC = "23456789".ToCharArray();
-        char[] PASSWORD_CHARS_SPECIAL = "*$-+?_&=!%{}/".ToCharArray();
-
-        int passminLength = 16;
-        int passmaxLength = 24;
-
+        char[] PASSWORD_CHARS_SPECIAL = "*@$-+?_&=!%/".ToCharArray();
         Random random = new();
 
-        char[] password = new char[random.Next(passminLength, passmaxLength)];
+        char[] password = new char[32];
 
         for (int i = 0; i < password.Length; i++)
         {
-            switch (random.Next(0, 12))
+            switch (random.Next(1, 12))
             {
-                case 0:
                 case 1:
                 case 2:
                 case 3:
@@ -142,5 +137,18 @@ public static class Helper
     public static Stream ConvertStringtoStream(string data)
     {
         return BinaryData.FromString(data).ToStream();
+    }
+
+    public static CancellationTokenSource CreateCancellationToken(double minutes, List<CancellationToken> cancellationTokens)
+    {
+        if(cancellationTokens == null)
+        {
+            cancellationTokens = new List<CancellationToken>();
+        }
+
+        CancellationTokenSource cancellationTokenSource = new();
+        cancellationTokenSource.CancelAfter(TimeSpan.FromMinutes(minutes));
+        cancellationTokens.Add(cancellationTokenSource.Token);
+        return CancellationTokenSource.CreateLinkedTokenSource(cancellationTokens.ToArray());
     }
 }
