@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CommonNet</name>
+    </assembly>
+    <members>
+        <member name="T:CommonNet.Dapper.IDapper">
+            <summary>
+            idapper interface
+            </summary>
+        </member>
+        <member name="M:CommonNet.Dapper.IDapper.GetList``1(Dapper.CommandDefinition)">
+            <summary>
+            returns list of data
+            </summary>
+            <typeparam name="T">any class type</typeparam>
+            <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
+            <returns>List of T</returns>
+        </member>
+        <member name="M:CommonNet.Dapper.IDapper.GetItem``1(Dapper.CommandDefinition)">
+            <summary>
+            returns an item
+            </summary>
+            <typeparam name="T">any class type</typeparam>
+            <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
+            <returns>item</returns>
+        </member>
+        <member name="M:CommonNet.Dapper.IDapper.ExecuteAsync(Dapper.CommandDefinition)">
+            <summary>
+            used to add or update data
+            </summary>
+            <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
+            <returns>returns 1 if successfully executed.</returns>
+        </member>
+        <member name="T:CommonNet.Dapper.Dapper">
+            <summary>
+            dapper class
+            </summary>
+        </member>
+        <member name="M:CommonNet.Dapper.Dapper.SetConnectionString(System.String)">
+            <summary>
+            sets sql connection string
+            </summary>
+            <param name="connectionString">connection string of sql</param>
+        </member>
+        <member name="M:CommonNet.Dapper.Dapper.GetList``1(Dapper.CommandDefinition)">
+            <summary>
+            returns list of data
+            </summary>
+            <typeparam name="T">any class type</typeparam>
+            <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
+            <returns>List of T</returns>
+        </member>
+        <member name="M:CommonNet.Dapper.Dapper.GetItem``1(Dapper.CommandDefinition)">
+            <summary>
+            returns an item
+            </summary>
+            <typeparam name="T">any class type</typeparam>
+            <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
+            <returns>item</returns>
+        </member>
+        <member name="M:CommonNet.Dapper.Dapper.ExecuteAsync(Dapper.CommandDefinition)">
+            <summary>
+            used to add or update data
+            </summary>
+            <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
+            <returns>returns 1 if successfully executed. returns 0 if failed</returns>
+        </member>
+        <member name="T:CommonNet.Helpers.Helper">
+            <summary>
+            helper class
+            </summary>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.ToBase64(System.String)">
+            <summary>
+            converts string to base64
+            </summary>
+            <param name="str">string that is converted to base64</param>
+            <returns>base64 encoded string</returns>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.FromBase64(System.String)">
+            <summary>
+            converts base64 string to string
+            </summary>
+            <param name="str">base64 string that is converted to string</param>
+            <returns>base64 decoded string</returns>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.GenerateToken(CommonNet.Models.TokenModel)">
+            <summary>
+            generates token
+            </summary>
+            <param name="model">token model which is consumed to create the token</param>
+            <returns>token</returns>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.GenerateOTP(System.Int32)">
+            <summary>
+            generates otp
+            </summary>
+            <param name="numberofcharacters">number of characters in otp, default is 4</param>
+            <returns>otp</returns>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.GeneratePassword">
+            <summary>
+            generates random password
+            </summary>
+            <returns>random password</returns>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.ReadFileBytes(System.String)">
+            <summary>
+            converts file to bytes
+            </summary>
+            <param name="path">file path</param>
+            <returns>byte array of file</returns>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.CopyfromSourcetoDestination(System.String,System.String)">
+            <summary>
+            copies file from source to destination
+            </summary>
+            <param name="source">source file path</param>
+            <param name="destination">destination file path</param>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.CheckIfFileExists(System.String)">
+            <summary>
+            checks if the file exists
+            </summary>
+            <param name="path">file path</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.DeleteFile(System.String)">
+            <summary>
+            deletes file
+            </summary>
+            <param name="path">file path</param>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.CopyStreamtoNewStream(System.IO.Stream)">
+            <summary>
+            converts non seekable streams to seekable streams
+            </summary>
+            <param name="stream">stream that is to be copied to new stream</param>
+            <returns>stream</returns>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.ConvertStreamtoBytes(System.IO.Stream)">
+            <summary>
+            converts stream to bytes
+            </summary>
+            <param name="stream">stream</param>
+            <returns>byte array</returns>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.ConvertBytestoStream(System.Byte[])">
+            <summary>
+            converts bytes to stream
+            </summary>
+            <param name="bytes">byte array</param>
+            <returns>stream</returns>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.ConvertStreamtoString(System.IO.Stream)">
+            <summary>
+            converts stream to string
+            </summary>
+            <param name="stream">stream</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.ConvertStringtoStream(System.String)">
+            <summary>
+            converts string to stream
+            </summary>
+            <param name="data">string</param>
+            <returns>stream</returns>
+        </member>
+        <member name="M:CommonNet.Helpers.Helper.CreateCancellationToken(System.Collections.Generic.List{System.Threading.CancellationToken},System.Double)">
+            <summary>
+            creates a cancellation token combining different tokens
+            </summary>
+            <param name="cancellationTokens"></param>
+            <param name="minutes">minutes in which the task has to be cancelled, default is 2</param>
+            <returns>cancellationtokensource, dispose it later</returns>
+        </member>
+        <member name="T:CommonNet.Models.Keys">
+            <summary>
+            keys 
+            </summary>
+        </member>
+        <member name="F:CommonNet.Models.Keys.SQLCONNECTIONSTRING">
+            <summary>
+            sql connection string
+            </summary>
+        </member>
+        <member name="T:CommonNet.Models.TokenModel">
+            <summary>
+            token model used for creating the token
+            </summary>
+        </member>
+        <member name="P:CommonNet.Models.TokenModel.Issuer">
+            <summary>
+            issuer of the token
+            </summary>
+        </member>
+        <member name="P:CommonNet.Models.TokenModel.Audience">
+            <summary>
+            audience of the token
+            </summary>
+        </member>
+        <member name="P:CommonNet.Models.TokenModel.Claims">
+            <summary>
+            claims of the token
+            </summary>
+        </member>
+        <member name="P:CommonNet.Models.TokenModel.Expires">
+            <summary>
+            expires in days. default is 7
+            </summary>
+        </member>
+        <member name="P:CommonNet.Models.TokenModel.SecurityKey">
+            <summary>
+            security key of token
+            </summary>
+        </member>
+    </members>
+</doc>

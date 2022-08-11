@@ -14,7 +14,7 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageId>AbsoluteAlgorithm.$(AssemblyName)</PackageId>
 		<NeutralLanguage>en</NeutralLanguage>
-		<PackageIcon>icon.png</PackageIcon>
+		<PackageIcon>NugetHelpers\icon.png</PackageIcon>
 		<Version>1.0.0</Version>
 	</PropertyGroup>
 
@@ -32,10 +32,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="documentation.xml">
+	  <None Update="NugetHelpers\documentation.xml">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
-	  <None Update="icon.png">
+	  <None Update="NugetHelpers\icon.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
