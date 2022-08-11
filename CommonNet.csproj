@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<DocumentationFile></DocumentationFile>
+		<DocumentationFile>NugetHelpers\documentation.xml</DocumentationFile>
 		<Authors>S Lalith Prasad</Authors>
 		<Company>Absolute Algorithm</Company>
 		<Description>this library consists of C# helper functions, including Azure</Description>
@@ -26,7 +26,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Azure\Storage\" />
 		<Folder Include="Dapper\" />
 		<Folder Include="Azure\AI\" />
 	</ItemGroup>
