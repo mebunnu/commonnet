@@ -6,3 +6,6 @@ global using Microsoft.IdentityModel.Tokens;
 global using Dapper;
 global using System.Data.SqlClient;
 global using System.Transactions;
+global using Azure;
+global using Azure.Storage.Blobs;
+global using Azure.Storage.Blobs.Models;
