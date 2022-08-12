@@ -210,6 +210,19 @@ public static class Helper
     }
 
     /// <summary>
+    /// converts file to stream
+    /// </summary>
+    /// <param name="file">IFormFile</param>
+    /// <returns>stream</returns>
+    public static Stream ConvertFileToStream(IFormFile file)
+    {
+        using MemoryStream ms = new MemoryStream();
+        file.CopyTo(ms);
+
+        return BinaryData.FromStream(ms).ToStream();
+    }
+
+    /// <summary>
     /// creates a cancellation token combining different tokens
     /// </summary>
     /// <param name="cancellationTokens"></param>
