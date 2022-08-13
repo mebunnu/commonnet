@@ -203,6 +203,4 @@ public class BlobStorage
 
         return await blobClient.DeleteIfExistsAsync();
     }
-
-   
 }
