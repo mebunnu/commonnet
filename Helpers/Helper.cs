@@ -223,7 +223,7 @@ public static class Helper
     }
 
     /// <summary>
-    /// creates a cancellation token combining different tokens
+    /// creates a cancellation token source combining different tokens
     /// </summary>
     /// <param name="cancellationTokens"></param>
     /// <param name="minutes">minutes in which the task has to be cancelled, default is 2</param>

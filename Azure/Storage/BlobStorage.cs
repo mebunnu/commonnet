@@ -1,4 +1,6 @@
-﻿namespace CommonNet.Azure.Storage;
+﻿using Azure.Storage.Sas;
+
+namespace CommonNet.Azure.Storage;
 
 /// <summary>
 /// blob storage
@@ -26,7 +28,7 @@ public class BlobStorage
         BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
 
         //write public access type
-        await containerClient.CreateIfNotExistsAsync(PublicAccessType.Blob);
+        await containerClient.CreateIfNotExistsAsync(PublicAccessType.BlobContainer);
     }
 
     /// <summary>
@@ -203,4 +205,106 @@ public class BlobStorage
 
         return await blobClient.DeleteIfExistsAsync();
     }
+
+    /// <summary>
+    /// generates sas uri for container
+    /// </summary>
+    /// <param name="containerName">container name</param>
+    /// <param name="blobContainerSasPermissions">container permission</param>
+    /// <param name="hours">hours before sas uri expires</param>
+    /// <param name="storedPolicyName">stored policy name</param>
+    /// <returns>uri</returns>
+    public Uri GetServiceSasUriForContainer(string containerName, BlobContainerSasPermissions[] blobContainerSasPermissions, byte hours = 1,
+                                          string storedPolicyName = null)
+    {
+        BlobServiceClient blobServiceClient = new BlobServiceClient(Keys.BLOBSTORAGECONNECTIONSTRING);
+
+        BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+
+        BlobContainerSasPermissions permissions = default;
+
+        for (int i = 0; i < blobContainerSasPermissions.Length; i++)
+        {
+            permissions = permissions | blobContainerSasPermissions[i];
+        }
+
+        if (containerClient.CanGenerateSasUri)
+        {
+            BlobSasBuilder sasBuilder = new BlobSasBuilder()
+            {
+                BlobContainerName = containerClient.Name,
+                Resource = "c"
+            };
+
+            if (storedPolicyName == null)
+            {
+                sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(hours);
+                sasBuilder.SetPermissions(permissions);
+            }
+            else
+            {
+                sasBuilder.Identifier = storedPolicyName;
+            }
+
+            return containerClient.GenerateSasUri(sasBuilder);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// generates sas uri for blob
+    /// </summary>
+    /// <param name="containerName">container name</param>
+    /// <param name="path">file path</param>
+    /// <param name="blobSasPermissions">blob permission</param>
+    /// <param name="hours">hours before sas uri expires</param>
+    /// <param name="storedPolicyName">stored policy name</param>
+    /// <returns>uri</returns>
+    public Uri GetServiceSasUriForBlob(string containerName, string path,
+    BlobSasPermissions[] blobSasPermissions, byte hours = 1, string storedPolicyName = null)
+    {
+        BlobServiceClient blobServiceClient = new BlobServiceClient(Keys.BLOBSTORAGECONNECTIONSTRING);
+
+        BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+
+        BlobClient blobClient = containerClient.GetBlobClient(path);
+
+        BlobSasPermissions permissions = default;
+
+        for (int i = 0; i < blobSasPermissions.Length; i++)
+        {
+            permissions = permissions | blobSasPermissions[i];
+        }
+
+        if (blobClient.CanGenerateSasUri)
+        {
+            BlobSasBuilder sasBuilder = new BlobSasBuilder()
+            {
+                BlobContainerName = containerName,
+                BlobName = blobClient.Name,
+                Resource = "b"
+            };
+
+            if (storedPolicyName == null)
+            {
+                sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(hours);
+                sasBuilder.SetPermissions(permissions);
+            }
+            else
+            {
+                sasBuilder.Identifier = storedPolicyName;
+            }
+
+            return blobClient.GenerateSasUri(sasBuilder);
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
+
+ 

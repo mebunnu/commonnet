@@ -9,6 +9,119 @@
             blob storage
             </summary>
         </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.SetConnectionString(System.String)">
+            <summary>
+            sets the connection string
+            </summary>
+            <param name="connectionString">connection string of blob storage</param>
+        </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.CreateContainerAsync(System.String)">
+            <summary>
+            creates a container if doesnot exist
+            </summary>
+            <param name="containerName">name of the container</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.DeleteContainerAsync(System.String)">
+            <summary>
+            deletes a container if exists
+            </summary>
+            <param name="containerName">name of the container</param>
+            <returns>true if deleted, false if not deleted</returns>
+        </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.GetListofContainersAsync(System.String,System.Int32)">
+            <summary>
+            returns list of containers
+            </summary>
+            <param name="prefix">used to filter the containers</param>
+            <param name="segmentSize">used to define the size of the segment</param>
+            <returns>list of containers</returns>
+        </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.UploadAsync(System.String,System.String,Microsoft.AspNetCore.Http.IFormFile,System.Threading.CancellationToken)">
+            <summary>
+            uploads file to the storage
+            </summary>
+            <param name="containerName">container name</param>
+            <param name="path">path of the file along with folder and extension</param>
+            <param name="file">IFormFile</param>
+            <param name="cancellationToken">cancellationToken</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.UploadAsync(System.String,System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            uploads file to the storage
+            </summary>
+            <param name="containerName">container name</param>
+            <param name="path">path of the file along with folder and extension</param>
+            <param name="data">byte array</param>
+            <param name="cancellationToken">cancellationToken</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.UploadAsync(System.String,System.String,System.BinaryData,System.Threading.CancellationToken)">
+            <summary>
+            uploads file to the storage
+            </summary>
+            <param name="containerName">container name</param>
+            <param name="path">path of the file along with folder and extension</param>
+            <param name="binaryData">BinaryData</param>
+            <param name="cancellationToken">cancellationToken</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.UploadAsync(System.String,System.String,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            uploads file to the storage
+            </summary>
+            <param name="containerName">container name</param>
+            <param name="path">path of the file along with folder and extension</param>
+            <param name="stream">stream</param>
+            <param name="cancellationToken">cancellationToken</param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.DownloadBlobAsync(System.String,System.String)">
+            <summary>
+            downloads a blob
+            </summary>
+            <param name="containerName">container name</param>
+            <param name="path">path of the file</param>
+            <returns>stream</returns>
+        </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.CheckIfFileExistsAsync(System.String,System.String)">
+            <summary>
+            checks if file exists
+            </summary>
+            <param name="containerName">container name</param>
+            <param name="path">file path</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.DeleteBlobAsync(System.String,System.String)">
+            <summary>
+            deletes a blob if exists
+            </summary>
+            <param name="containerName">container name</param>
+            <param name="path">path of the file</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.GetServiceSasUriForContainer(System.String,Azure.Storage.Sas.BlobContainerSasPermissions[],System.Byte,System.String)">
+            <summary>
+            generates sas uri for container
+            </summary>
+            <param name="containerName">container name</param>
+            <param name="blobContainerSasPermissions">container permission</param>
+            <param name="hours">hours before sas uri expires</param>
+            <param name="storedPolicyName">stored policy name</param>
+            <returns>uri</returns>
+        </member>
+        <member name="M:CommonNet.Azure.Storage.BlobStorage.GetServiceSasUriForBlob(System.String,System.String,Azure.Storage.Sas.BlobSasPermissions[],System.Byte,System.String)">
+            <summary>
+            generates sas uri for blob
+            </summary>
+            <param name="containerName">container name</param>
+            <param name="path">file path</param>
+            <param name="blobSasPermissions">blob permission</param>
+            <param name="hours">hours before sas uri expires</param>
+            <param name="storedPolicyName">stored policy name</param>
+            <returns>uri</returns>
+        </member>
         <member name="T:CommonNet.Dapper.IDapper">
             <summary>
             idapper interface
@@ -172,9 +285,16 @@
             <param name="data">string</param>
             <returns>stream</returns>
         </member>
+        <member name="M:CommonNet.Helpers.Helper.ConvertFileToStream(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            converts file to stream
+            </summary>
+            <param name="file">IFormFile</param>
+            <returns>stream</returns>
+        </member>
         <member name="M:CommonNet.Helpers.Helper.CreateCancellationToken(System.Collections.Generic.List{System.Threading.CancellationToken},System.Double)">
             <summary>
-            creates a cancellation token combining different tokens
+            creates a cancellation token source combining different tokens
             </summary>
             <param name="cancellationTokens"></param>
             <param name="minutes">minutes in which the task has to be cancelled, default is 2</param>
@@ -188,6 +308,11 @@
         <member name="F:CommonNet.Models.Keys.SQLCONNECTIONSTRING">
             <summary>
             sql connection string
+            </summary>
+        </member>
+        <member name="F:CommonNet.Models.Keys.BLOBSTORAGECONNECTIONSTRING">
+            <summary>
+            blob storage connection string
             </summary>
         </member>
         <member name="T:CommonNet.Models.TokenModel">
