@@ -14,27 +14,27 @@ https://docs.microsoft.com/en-us/azure/storage/files/storage-dotnet-how-to-use-f
 
 ## Project Structure
 
-📦CommonNet
- ┣ 📂Azure
- ┃ ┣ 📂AI
- ┃ ┣ 📂KeyVault
- ┃ ┃ ┗ 📜KeyVault.cs
- ┃ ┗ 📂Storage
- ┃ ┃ ┗ 📜BlobStorage.cs
- ┣ 📂Dapper
- ┃ ┗ 📜Dapper.cs
- ┣ 📂Helpers
- ┃ ┗ 📜Helper.cs
- ┣ 📂Models
- ┃ ┣ 📜Keys.cs
- ┃ ┗ 📜TokenModel.cs
- ┣ 📂NugetHelpers
- ┃ ┣ 📜documentation.xml
- ┃ ┗ 📜icon.png
- ┣ 📜.gitattributes
- ┣ 📜.gitignore
- ┣ 📜CommonNet.csproj
- ┣ 📜CommonNet.sln
- ┣ 📜LICENSE.txt
- ┣ 📜README.md
- ┗ 📜Usings.cs
+ .
+ ┣ Azure
+ ┃ ┣ AI
+ ┃ ┣ KeyVault
+ ┃ ┃ ┗ KeyVault.cs
+ ┃ ┗ Storage
+ ┃ ┃ ┗ BlobStorage.cs
+ ┣ Dapper
+ ┃ ┗ Dapper.cs
+ ┣ Helpers
+ ┃ ┗ Helper.cs
+ ┣ Models
+ ┃ ┣ Keys.cs
+ ┃ ┗ TokenModel.cs
+ ┣ NugetHelpers
+ ┃ ┣ documentation.xml
+ ┃ ┗ icon.png
+ ┣ .gitattributes
+ ┣ .gitignore
+ ┣ CommonNet.csproj
+ ┣ CommonNet.sln
+ ┣ LICENSE.txt
+ ┣ README.md
+ ┗ Usings.cs
