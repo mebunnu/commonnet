@@ -10,3 +10,6 @@ global using Azure;
 global using Azure.Storage.Blobs;
 global using Azure.Storage.Blobs.Models;
 global using Microsoft.AspNetCore.Http;
+global using Azure.Identity;
+global using Azure.Security.KeyVault.Secrets;
+global using Azure.Storage.Sas;

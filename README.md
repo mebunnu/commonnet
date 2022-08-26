@@ -17,6 +17,8 @@ https://docs.microsoft.com/en-us/azure/storage/files/storage-dotnet-how-to-use-f
 📦CommonNet
  ┣ 📂Azure
  ┃ ┣ 📂AI
+ ┃ ┣ 📂KeyVault
+ ┃ ┃ ┗ 📜KeyVault.cs
  ┃ ┗ 📂Storage
  ┃ ┃ ┗ 📜BlobStorage.cs
  ┣ 📂Dapper

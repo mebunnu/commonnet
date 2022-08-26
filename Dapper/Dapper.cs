@@ -1,38 +1,9 @@
 ﻿namespace CommonNet.Dapper;
 
 /// <summary>
-/// idapper interface
-/// </summary>
-internal interface IDapper
-{
-    /// <summary>
-    /// returns list of data
-    /// </summary>
-    /// <typeparam name="T">any class type</typeparam>
-    /// <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
-    /// <returns>List of T</returns>
-    Task<IEnumerable<T>> GetList<T>(CommandDefinition commandDefinition);
-
-    /// <summary>
-    /// returns an item
-    /// </summary>
-    /// <typeparam name="T">any class type</typeparam>
-    /// <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
-    /// <returns>item</returns>
-    Task<T> GetItem<T>(CommandDefinition commandDefinition);
-
-    /// <summary>
-    /// used to add or update data
-    /// </summary>
-    /// <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
-    /// <returns>returns 1 if successfully executed.</returns>
-    ValueTask<int> ExecuteAsync(CommandDefinition commandDefinition);
-}
-
-/// <summary>
 /// dapper class
 /// </summary>
-public class Dapper : IDapper
+public class Dapper
 {
     /// <summary>
     /// sets sql connection string

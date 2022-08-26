@@ -1,9 +1,7 @@
-﻿using Azure.Storage.Sas;
-
-namespace CommonNet.Azure.Storage;
+﻿namespace CommonNet.Azure.Storage;
 
 /// <summary>
-/// blob storage
+/// blob storage class
 /// </summary>
 public class BlobStorage
 {
@@ -307,4 +305,3 @@ public class BlobStorage
     }
 }
 
- 
