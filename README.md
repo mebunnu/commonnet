@@ -14,7 +14,7 @@ https://docs.microsoft.com/en-us/azure/storage/files/storage-dotnet-how-to-use-f
 
 ## Project Structure
 
- .
+CommonNet
  ┣ Azure
  ┃ ┣ AI
  ┃ ┣ KeyVault
