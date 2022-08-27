@@ -3,7 +3,7 @@
 /// <summary>
 /// keyvault class
 /// </summary>
-public class KeyVault
+public class Keyvault
 {
     /// <summary>
     /// returns the secret using keyvault name and key.
