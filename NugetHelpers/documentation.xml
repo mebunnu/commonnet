@@ -4,9 +4,22 @@
         <name>CommonNet</name>
     </assembly>
     <members>
+        <member name="T:CommonNet.Azure.KeyVault.KeyVault">
+            <summary>
+            keyvault class
+            </summary>
+        </member>
+        <member name="M:CommonNet.Azure.KeyVault.KeyVault.GetSecret(System.String,System.String)">
+            <summary>
+            returns the secret using keyvault name and key.
+            </summary>
+            <param name="keyVaultName">name of the vault</param>
+            <param name="key">key</param>
+            <returns>secret</returns>
+        </member>
         <member name="T:CommonNet.Azure.Storage.BlobStorage">
             <summary>
-            blob storage
+            blob storage class
             </summary>
         </member>
         <member name="M:CommonNet.Azure.Storage.BlobStorage.SetConnectionString(System.String)">
@@ -121,34 +134,6 @@
             <param name="hours">hours before sas uri expires</param>
             <param name="storedPolicyName">stored policy name</param>
             <returns>uri</returns>
-        </member>
-        <member name="T:CommonNet.Dapper.IDapper">
-            <summary>
-            idapper interface
-            </summary>
-        </member>
-        <member name="M:CommonNet.Dapper.IDapper.GetList``1(Dapper.CommandDefinition)">
-            <summary>
-            returns list of data
-            </summary>
-            <typeparam name="T">any class type</typeparam>
-            <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
-            <returns>List of T</returns>
-        </member>
-        <member name="M:CommonNet.Dapper.IDapper.GetItem``1(Dapper.CommandDefinition)">
-            <summary>
-            returns an item
-            </summary>
-            <typeparam name="T">any class type</typeparam>
-            <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
-            <returns>item</returns>
-        </member>
-        <member name="M:CommonNet.Dapper.IDapper.ExecuteAsync(Dapper.CommandDefinition)">
-            <summary>
-            used to add or update data
-            </summary>
-            <param name="commandDefinition">command definition that contains cancellation token, parameters and sql statement etc</param>
-            <returns>returns 1 if successfully executed.</returns>
         </member>
         <member name="T:CommonNet.Dapper.Dapper">
             <summary>
