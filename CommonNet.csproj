@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<DocumentationFile>NugetHelpers\documentation.xml</DocumentationFile>
+		<DocumentationFile></DocumentationFile>
 		<Authors>S Lalith Prasad</Authors>
 		<Company>Absolute Algorithm</Company>
 		<Description>this library consists of C# helper functions, including Azure</Description>
