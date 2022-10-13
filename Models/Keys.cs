@@ -14,4 +14,14 @@ internal static class Keys
     /// blob storage connection string
     /// </summary>
     internal static string BLOBSTORAGECONNECTIONSTRING;
+
+    /// <summary>
+    /// aes symmetric key
+    /// </summary>
+    internal static byte[] MD5KEY;
+
+    /// <summary>
+    /// aes symmetric iv
+    /// </summary>
+    internal static byte[] MD5IV;
 }

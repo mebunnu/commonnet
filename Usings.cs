@@ -13,3 +13,4 @@ global using Microsoft.AspNetCore.Http;
 global using Azure.Identity;
 global using Azure.Security.KeyVault.Secrets;
 global using Azure.Storage.Sas;
+global using System.Security.Cryptography;

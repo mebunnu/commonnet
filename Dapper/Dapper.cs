@@ -9,7 +9,7 @@ public class Dapper
     /// sets sql connection string
     /// </summary>
     /// <param name="connectionString">connection string of sql</param>
-    public void SetConnectionString(string connectionString)
+    public static void SetConnectionString(string connectionString)
     {
         Keys.SQLCONNECTIONSTRING = connectionString;
     }

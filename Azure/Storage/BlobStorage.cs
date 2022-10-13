@@ -9,7 +9,7 @@ public class BlobStorage
     /// sets the connection string
     /// </summary>
     /// <param name="connectionString">connection string of blob storage</param>
-    public void SetConnectionString(string connectionString)
+    public static void SetConnectionString(string connectionString)
     {
         Keys.BLOBSTORAGECONNECTIONSTRING = connectionString;
     }
