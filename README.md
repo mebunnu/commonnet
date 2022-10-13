@@ -13,7 +13,7 @@ do not forget to empty DocumentationFile in CommonNet.csproj xml before creating
 https://docs.microsoft.com/en-us/azure/storage/files/storage-dotnet-how-to-use-files?tabs=dotnet
 
 ## Project Structure
-
+```
 CommonNet
  ┣ Azure
  ┃ ┣ AI
@@ -38,3 +38,4 @@ CommonNet
  ┣ LICENSE.txt
  ┣ README.md
  ┗ Usings.cs
+```
